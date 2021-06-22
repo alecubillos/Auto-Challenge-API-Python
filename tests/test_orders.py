@@ -25,6 +25,7 @@ def test_create_order():
 
 def test_check_coupon_applied_to_order():
     response = Orders().get_order(wcapi, ORDERID)
+    assert response.ok
     discount = 0.5
     total = float(response.json()['total'])
     orderTotalBeforeTax = float(response.json()['line_items'][0]['subtotal'])

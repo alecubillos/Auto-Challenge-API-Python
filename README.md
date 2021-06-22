@@ -10,10 +10,10 @@ Teardown:
 2. Delete the created Coupon
 3. Delete the created Order
 
-#To Run All the Tests at Once
+To Run All the Tests at Once
 1. Open the terminal and execute the command: pytest tests
 
-#To Ruun a Specific Test
+To Run a Specific Test
 1. Open the terminal and execute the command: pytest tests/<test_name.py>
 i.e: To run the tests for products: pytest tests/test_products.py
 

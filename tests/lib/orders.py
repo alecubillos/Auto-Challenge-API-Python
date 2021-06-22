@@ -43,10 +43,9 @@ class Orders:
             ],
             "coupon_lines": [
                 {
-                    "id": 206,
+                    # "id": 206,
                     "code": '50off',
                     "discount": "100.00"
-
                 }]
         }
 
@@ -69,3 +68,13 @@ class Orders:
         deletedOrder = wcapi.delete(
             "orders/"+str(orderID), params={"force": True})
         return deletedOrder
+
+    def get_order(self, wcapi, orderID):
+        """
+        This method gets a specific order based on the order's id
+        :param wcapi: The API session
+        :param orderID: order's id to be retrieved
+        return: The response from the API that contains the information of the retrieved order and API response status code
+        """
+        getOrder = wcapi.get("orders/"+str(orderID))
+        return getOrder

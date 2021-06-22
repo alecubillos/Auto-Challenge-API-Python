@@ -23,6 +23,16 @@ def test_create_order():
     ).order['billing']['email'], 'Verify the order was created by checking the email'
 
 
+def test_check_coupon_applied_to_order():
+    response = Orders().get_order(wcapi, ORDERID)
+    discount = 0.5
+    total = float(response.json()['total'])
+    orderTotalBeforeTax = float(response.json()['line_items'][0]['subtotal'])
+    shipping = float(response.json()['shipping_total'])
+    totalWithDiscount = orderTotalBeforeTax - (orderTotalBeforeTax*discount)
+    assert total-shipping == totalWithDiscount
+
+
 def test_delete_order():
     response = Orders().delete_order(wcapi, ORDERID)
     assert response.ok
